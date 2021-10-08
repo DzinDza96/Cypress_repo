@@ -1,0 +1,18 @@
+{
+    "header": {
+        "loginButton": "a[href='/login']",
+        "registerButton": "a[href='/register']",
+        "logoutButton": "a[role='button ']"
+    },
+    "loginPage": {
+        "emailInput": "input[id='email']",
+        "passwordInput": "input[id='password']",
+        "submitButton": "button[type='submit']"
+    },
+    "registerPage": {
+        "firstNameInput": "input[id=first-name]",
+        "lastNameInput": "input[id=last-name]",
+        "confirmPasswordInput": "input[id=password-confirmation]",
+        "checkBox": "input[type='checkbox']"
+    }
+}
