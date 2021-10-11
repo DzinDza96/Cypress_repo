@@ -11,9 +11,9 @@ describe("createGallery", () => {
     let myDescription = "Cowabunga"
     let imageURL = "https://static.wikia.nocookie.net/tmnt/images/3/34/Cowabunga.jpg"
     
-    beforeEach(() => {
-        cy.visit('/login');
-        loginPage.login(myEmail, myPassword);
+    beforeEach('log into the app', () => {
+        cy.loginViaBackend(Cypress.env('validEmailAddress'), Cypress.env('validPassword'));
+        cy.visit('/create')
     })
     it("Create Gallery / all emty fields", () => {
         createGallery.createGalleryButton.click();
@@ -37,6 +37,7 @@ describe("createGallery", () => {
         cy.get('a.box-title').contains(myTitle).should('be.visible');
     })
     it("Buttons_pagination", () => {
+        cy.visit('');
         navigation.myGalleriesBtn.should('be.visible');
         navigation.createGalleryBtn.should('be.visible');
         navigation.logoutBtn.should('be.visible');

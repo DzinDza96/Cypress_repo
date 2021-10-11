@@ -18,6 +18,9 @@ export default class LoginPage {
     get logoutButton() {
         return cy.get('a[role="button "]')
     }
+    get errorMesage() {
+        return cy.get('p[class="alert alert-danger"]')
+    }
 
     login(email,password) {
         this.loginButton.click();

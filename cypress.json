@@ -1,3 +1,7 @@
 {
-    "baseUrl": "https://gallery-app.vivifyideas.com"
+    "baseUrl": "https://gallery-app.vivifyideas.com",
+    "env": {
+        "validEmailAddress": "cowabunga@tmnt.com",
+        "validPassword": "test12345"
+    }
 }

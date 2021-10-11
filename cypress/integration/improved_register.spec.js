@@ -30,4 +30,14 @@ describe('Improved register', () => {
         cy.get(Locators.header.logoutButton).should('be.visible');
     })
 
+    it('register user with invalid credentials', () => {
+        cy.get(Locators.registerPage.firstNameInput).type('Kornjaca');
+        cy.get(Locators.registerPage.lastNameInput).type('Ralf');
+        cy.get(Locators.loginPage.emailInput).type('nesto@com');
+        cy.get(Locators.loginPage.passwordInput).type('da');
+        cy.get(Locators.registerPage.confirmPasswordInput).type('ne');
+        cy.get(Locators.registerPage.checkBox).check();
+        cy.get(Locators.loginPage.submitButton).click();
+    })
+
 })
