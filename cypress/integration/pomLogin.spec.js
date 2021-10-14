@@ -26,6 +26,7 @@ describe('POM login', () => {
 
         loginPage.login(correctEmail, correctPassword);
         cy.wait('@validLogin').then((interception) => {
+            cy.log(JSON.stringify(interception.response))
             expect(interception.response.statusCode).eq(200)
         })
         
@@ -45,6 +46,7 @@ describe('POM login', () => {
         loginPage.logoutButton.should('not.exist')
 
         cy.wait('@logout').then((interception) => {
+
             expect(interception.response.body.message).eq('Successfully logged out')
             expect(interception.response.statusCode).eq(200)
         })

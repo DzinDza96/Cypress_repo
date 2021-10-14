@@ -20,6 +20,9 @@ export default class Navigation {
     get loadMoreBtn () {
         return cy.get('button[class="btn btn-custom"]')
     }
+    get firstGalleryDiv () {
+        return cy.get('a[class="box-title"]').eq(0)
+    }
 }
 
 export const navigation = new Navigation();

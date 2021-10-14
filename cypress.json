@@ -2,6 +2,10 @@
     "baseUrl": "https://gallery-app.vivifyideas.com",
     "env": {
         "validEmailAddress": "cowabunga@tmnt.com",
-        "validPassword": "test12345"
+        "validPassword": "test12345",
+        "validTitle": "Turtle",
+        "validDescription": "ninja",
+        "validImageUrl": ["https://static.wikia.nocookie.net/tmnt/images/3/34/Cowabunga.jpg"]
+        
     }
 }

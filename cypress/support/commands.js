@@ -37,3 +37,28 @@ Cypress.Commands.add('loginViaBackend', (email, password) => {
         window.localStorage.setItem('token', response.access_token);
     })
 })
+Cypress.Commands.add('CreateGViaBackend', (title, description, imageUrl) => {
+    cy.request(
+        {
+        method: 'POST',
+        url: 'https://gallery-api.vivifyideas.com/api/galleries',
+        body: {
+            title: title,
+            description: description,
+            images: imageUrl
+        },
+        headers: {
+            authorization: 'Bearer ' + window.localStorage.getItem('token')
+        }
+    })
+})
+Cypress.Commands.add('deleteGViaBackend', () => {
+    cy.request(
+        {
+        method: 'DELETE',
+        url: `https://gallery-api.vivifyideas.com/api/galleries/${idGalerije}`,//?
+        headers: {
+            authorization: 'Bearer ' + window.localStorage.getItem('token')
+        }
+    })
+})
