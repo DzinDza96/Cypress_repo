@@ -1,24 +1,23 @@
 /// <reference types="Cypress"/>
+import { navigation } from "../page_objects/navigation"
 
-import { createGallery } from "../page_objects/createGalleryPage";
-import { navigation } from "../page_objects/navigation";
-
-describe("deleteGallery", () => {    
-    let myTitle = "dilitovana galerija";
-    let myDescription = "Cowabunga"
-    let imageURL = "https://static.wikia.nocookie.net/tmnt/images/3/34/Cowabunga.jpg"
-
-    beforeEach('log into the app and create gallery', () => {
-        cy.loginViaBackend(Cypress.env('validEmailAddress'), Cypress.env('validPassword'));
-        cy.visit('/create')
-        cy.intercept('POST', 'https://gallery-api.vivifyideas.com/api/galleries'
-        ).as('errorMessage')
-        createGallery.create(myTitle, myDescription, imageURL);
-        cy.wait('@errorMessage').its(response.body.id)//?
-    })    
-    it('deleteG', () => {
-        navigation.firstGalleryDiv.click();
-        cy.deleteGviabackend()
+describe("deleteGallery", () => {
+    it('test create gallery via BE', () => {
+        cy.loginViaBackend("cowabunga@tmnt.com", "test12345");
+        cy.visit('/create');
+        navigation.logoutBtn.should('be.visible');
+        cy.createGalleryViaBackend("nindza", "kornjaca", "http://img.jpg").then((responseObject) => {
+            let id = responseObject.body.id;
+            console.log(id)
+            cy.writeFile('galleryId.json', id.toString());
+        })
     })
-    
+
+    it('test delete gallery via BE', () => {
+        cy.loginViaBackend("cowabunga@tmnt.com", "test12345");
+        cy.readFile('./galleryId.json').then((file) => {
+            let galleryId = file;
+            cy.deleteGalleryViaBackend(galleryId);
+        })
+    })
 })

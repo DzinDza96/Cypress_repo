@@ -31,7 +31,6 @@ describe('POM login', () => {
         })
         
         loginPage.logoutButton.should('be.visible')
-
     })
 
     it('Logout',() => {

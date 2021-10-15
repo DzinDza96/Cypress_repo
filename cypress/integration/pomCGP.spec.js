@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
 const faker = require ("faker")
-import { loginPage } from "../page_objects/loginPage"
+
 import { createGallery } from "../page_objects/createGalleryPage"
 import { navigation } from "../page_objects/navigation"
 
@@ -36,16 +36,9 @@ describe("createGallery", () => {
         createGallery.createGalleryButton.click();
         createGallery.create(myTitle, myDescription, "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eeea355389655.59822ff824b72.gif");
     })
-    it.only("Create Gallery / valid credentials", () => {
-        cy.intercept('POST', 'https://gallery-api.vivifyideas.com/api/galleries'
-        ).as('createGaleriju')
+    it("Create Gallery / valid credentials", () => {
         createGallery.createGalleryButton.click();
         cy.CreateGViaBackend(Cypress.env('validTitle'), Cypress.env('validDescription'), Cypress.env("validImageUrl"));
-        cy.wait('@createGaleriju').then((interception) => {
-            expect(interception.response.statusCode).eq(201)
-            expect(interception.response.body.title).eq(Cypress.env("validTitle"))
-            expect(interception.response.body.description).eq(Cypress.env("validDescription"))
-        })
     })
     it("Buttons_pagination", () => {
         cy.visit('');

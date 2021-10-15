@@ -45,20 +45,36 @@ Cypress.Commands.add('CreateGViaBackend', (title, description, imageUrl) => {
         body: {
             title: title,
             description: description,
-            images: imageUrl
+            images: [imageUrl]
         },
         headers: {
             authorization: 'Bearer ' + window.localStorage.getItem('token')
         }
     })
 })
-Cypress.Commands.add('deleteGViaBackend', () => {
-    cy.request(
-        {
-        method: 'DELETE',
-        url: `https://gallery-api.vivifyideas.com/api/galleries/${idGalerije}`,//?
+Cypress.Commands.add(
+    "createGalleryViaBackend",
+    (title, description, imageUrl) => {
+      cy.request({
+        method: "POST",
+        url: "https://gallery-api.vivifyideas.com/api/galleries",
+        body: {
+          title: title,
+          description: description,
+          images: [imageUrl],
+        },
         headers: {
-            authorization: 'Bearer ' + window.localStorage.getItem('token')
-        }
+          authorization: `Bearer ${window.localStorage.getItem("token")}`,
+        },
+    });
+})
+  
+Cypress.Commands.add("deleteGalleryViaBackend", (id) => {
+    cy.request({
+      method: "DELETE",
+      url: `https://gallery-api.vivifyideas.com/api/galleries/${id}`,
+      headers: {
+        authorization: `Bearer ${window.localStorage.getItem("token")}`,
+      }
     })
 })

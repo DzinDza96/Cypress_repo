@@ -5,7 +5,7 @@
         "validPassword": "test12345",
         "validTitle": "Turtle",
         "validDescription": "ninja",
-        "validImageUrl": ["https://static.wikia.nocookie.net/tmnt/images/3/34/Cowabunga.jpg"]
+        "validImageUrl": "https://static.wikia.nocookie.net/tmnt/images/3/34/Cowabunga.jpg"
         
     }
 }
